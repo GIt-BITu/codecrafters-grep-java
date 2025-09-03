@@ -1,39 +1,51 @@
-[![progress-banner](https://backend.codecrafters.io/progress/grep/7cfbea3e-d280-4e28-9ee1-4846ff5207cb)](https://app.codecrafters.io/users/codecrafters-bot?r=2qF)
+# NAME
+   grep-clone — educational reimplementation of grep with custom regex engine
 
-This is a starting point for Java solutions to the
-["Build Your Own grep" Challenge](https://app.codecrafters.io/courses/grep/overview).
+# DESCRIPTION
+   This project is a from-scratch implementation of a simplified `grep(1)` utility. It supports:
+ - extended regular expressions,
+ - recursive directory traversal,
+ - standard input streaming.
+ - Pattern matching with literals, `.` (dot), character classes, groups.
+ - Quantifiers: `*`, `+`, `?`.
+ - Grouping with alternation `(a|b)`.
+ - Backreferences `\1`, `\2`, ….
+ - Recursive search with `-r`.
+ - Multiple file arguments or standard input.
 
-[Regular expressions](https://en.wikipedia.org/wiki/Regular_expression)
-(Regexes, for short) are patterns used to match character combinations in
-strings. [`grep`](https://en.wikipedia.org/wiki/Grep) is a CLI tool for
-searching using Regexes.
+ 
+   The implementation avoids the Java built-in regex engine.  
+   All matching logic is handled in our own recursive matcher.
+    The purpose of this implementation is educational: to demonstrate how pattern
+    matching, backtracking, and recursive descent engines can be built in Java
+    without relying on java.util.regex. The code quality has been refactored to
+    achieve modularity and readability, with strict separation of concerns.
 
-In this challenge you'll build your own implementation of `grep`. Along the way
-we'll learn about Regex syntax, how parsers/lexers work, and how regular
-expressions are evaluated.
+# SYNOPSIS
+    ./your_program.sh -E <pattern> [FILE...]
+    ./your_program.sh -r -E <pattern> [DIRECTORY...]
 
-**Note**: If you're viewing this repo on GitHub, head over to
-[codecrafters.io](https://codecrafters.io) to try the challenge.
+# USAGE
+- Non-recursive search through files:
 
-# Passing the first stage
+      ./your_program.sh -E "pattern" file.txt
 
-The entry point for your `grep` implementation is in `src/main/java/Main.java`.
-Study and uncomment the relevant code, and push your changes to pass the first
-stage:
+- Recursive search through a directory:
+      
+      ./your_program.sh -r -E "pattern" directory/
 
-```sh
-git commit -am "pass 1st stage" # any msg
-git push origin master
-```
+Standard input:
 
-Time to move on to the next stage!
+        echo "text" | ./your_program.sh -E "pattern"
 
-# Stage 2 & beyond
+# EXIT STATUS
+    0   At least one match was found.
+    1   No matches were found.
+    2   An error occurred.
 
-Note: This section is for stages 2 and beyond.
+## SEE ALSO
+- [README-CODE.md](./src/main/README-CODE.md) for code internals.
+- [README-TESTS.md](./src/test/README-TESTS.md) for test documentation.
 
-1. Ensure you have `mvn` installed locally
-1. Run `./your_program.sh` to run your program, which is implemented in
-   `src/main/java/Main.java`.
-1. Commit your changes and run `git push origin master` to submit your solution
-   to CodeCrafters. Test output will be streamed to your terminal.
+# AUTHORS
+Written and refactored by contributors as part of the Codecrafters challenge.
