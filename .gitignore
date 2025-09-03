@@ -1,0 +1,42 @@
+# === Java / Maven build outputs ===
+/target/
+*.class
+
+# === Java artifacts (fat jars, archives) ===
+*.jar
+*.war
+*.ear
+*.zip
+*.tar
+*.tar.gz
+dependency-reduced-pom.xml
+
+# Allow Maven Wrapper JAR if you later add the wrapper (do not remove this negate)
+!/.mvn/wrapper/maven-wrapper.jar
+
+# === Logs & JVM crash dumps ===
+*.log
+hs_err_pid*
+replay_pid*
+*.hprof
+
+# === IDEs ===
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# VS Code
+.vscode/
+
+# Eclipse
+.project
+.classpath
+.settings/
+.bin/
+
+# === OS / Editor cruft ===
+.DS_Store
+Thumbs.db
+*~
+*.swp

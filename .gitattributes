@@ -1,0 +1,47 @@
+# === Ensure consistent line endings ===
+* text=auto eol=lf
+
+# === Treat all source files as text ===
+*.java      text diff=java
+*.xml       text
+*.properties text
+*.md        text
+*.yml       text
+*.yaml      text
+*.json      text
+*.csv       text
+
+# === Scripts ===
+*.sh        text eol=lf
+*.bat       text eol=crlf
+
+# === Binary files (never diff) ===
+*.class     binary
+*.jar       binary
+*.war       binary
+*.ear       binary
+*.zip       binary
+*.tar       binary
+*.tar.gz    binary
+*.7z        binary
+*.pdf       binary
+*.png       binary
+*.jpg       binary
+*.jpeg      binary
+*.gif       binary
+*.ico       binary
+*.svg       binary
+*.ttf       binary
+*.woff      binary
+*.woff2     binary
+
+# === Documentation / Markdown ===
+*.md        text diff=markdown
+
+# === GitHub Linguist (optional) ===
+# Treat project files as Java
+*.java linguist-language=Java
+
+# === Merge drivers (advanced) ===
+# Prefer current branch for lock files or generated files
+pom.xml merge=ours
